@@ -1,262 +1,553 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Note for Garage Pizza</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <title>A note for Garage Pizza — from Zac</title>
   <style>
-    *, *::before, *::after {
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @page {
+      size: A4;
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
     }
 
-    html {
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #2a2a2a;
+      background: #fff;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    body {
-      background-color: #fffcf7;
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      padding: 20mm 24mm 16mm;
+      position: relative;
+      overflow: hidden;
+      background: #fffcf7;
+    }
+
+    /* Decorative corner blob */
+    .page::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 140px;
+      height: 140px;
+      background: #8B2332;
+      opacity: 0.12;
+      border-radius: 50%;
+    }
+
+    .page::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 160px;
+      height: 160px;
+      background: #8B2332;
+      opacity: 0.08;
+      border-radius: 50%;
+    }
+
+    /* LABEL */
+    .top-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8B2332;
+      margin-bottom: 10px;
+    }
+
+    /* HEADLINE */
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 42px;
+      font-weight: 800;
+      color: #1a1a1a;
+      line-height: 1.1;
+      margin-bottom: 22px;
+    }
+
+    /* BODY TEXT */
+    .body-text {
+      font-size: 14.5px;
       line-height: 1.75;
       color: #3a3a3a;
-      padding: 48px 24px;
+      margin-bottom: 16px;
+      max-width: 95%;
     }
 
-    .page {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .top-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-      color: #b0a090;
-      margin-bottom: 28px;
-    }
-
-    .headline {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
+    .body-text strong {
       font-weight: 700;
-      color: #2a2a2a;
-      margin-bottom: 36px;
-      line-height: 1.2;
+      color: #1a1a1a;
     }
 
-    .body-text {
-      font-size: 15px;
-      color: #4a4a4a;
-      margin-bottom: 24px;
-      line-height: 1.8;
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #e0d5c3;
+      margin: 18px 0;
     }
 
+    /* QR SECTION */
     .qr-section {
-      text-align: center;
-      margin: 40px 0;
+      background: #f5f0e8;
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 18px;
     }
 
-    .qr-section p {
-      font-size: 15px;
-      color: #4a4a4a;
-      margin-bottom: 20px;
-      line-height: 1.8;
+    .qr-section-text {
+      flex: 1;
     }
 
-    .qr-section img {
-      width: 180px;
-      height: auto;
-      display: block;
-      margin: 0 auto 10px;
-    }
-
-    .qr-section .url {
-      font-size: 13px;
-      color: #999;
-      letter-spacing: 0.3px;
-    }
-
-    .pricing-box {
-      border: 1.5px solid #e8dfd4;
-      background-color: #fef9ef;
-      border-radius: 14px;
-      padding: 32px 36px;
-      text-align: center;
-      max-width: 440px;
-      margin: 40px auto;
-    }
-
-    .pricing-box .price {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: #2a2a2a;
+    .qr-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #8B2332;
       margin-bottom: 6px;
     }
 
-    .pricing-box .subtitle {
-      font-size: 14px;
-      font-weight: 500;
-      color: #5a5a5a;
-      margin-bottom: 8px;
-    }
-
-    .pricing-box .detail {
-      font-size: 13px;
-      color: #999;
-    }
-
-    .sign-off {
-      margin-top: 40px;
+    .qr-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a1a;
       margin-bottom: 4px;
-      font-size: 15px;
-      color: #4a4a4a;
     }
 
-    .sign-name {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 26px;
+    .qr-url {
+      font-size: 14px;
       font-weight: 600;
-      color: #2a2a2a;
-      margin-bottom: 36px;
-    }
-
-    .contact {
-      border-top: 1px solid #e8e0d6;
-      padding-top: 28px;
-      margin-top: 8px;
-    }
-
-    .contact-line {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 4px;
-    }
-
-    .contact-line a {
-      color: #777;
-      text-decoration: none;
-    }
-
-    .contact-qr {
-      margin-top: 20px;
-    }
-
-    .contact-qr img {
-      width: 120px;
-      height: auto;
+      color: #8B2332;
+      text-decoration: underline;
+      text-decoration-color: #8B2332;
+      margin-bottom: 6px;
       display: block;
-      margin: 0 auto 8px;
     }
 
-    .contact-qr .url {
+    .qr-hint {
       font-size: 12px;
+      color: #888;
+    }
+
+    .qr-code {
+      flex-shrink: 0;
+    }
+
+    .qr-code img {
+      width: 180px;
+      height: 180px;
+      border-radius: 6px;
+    }
+
+    /* OFFER SECTION */
+    h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .offer-text {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: #3a3a3a;
+      margin-bottom: 14px;
+    }
+
+    /* PRICING BOX */
+    .pricing-box {
+      background: #f5f0e8;
+      border-radius: 12px;
+      padding: 18px 24px;
+      margin-bottom: 16px;
+    }
+
+    .pricing-amount {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .pricing-amount span {
+      font-size: 16px;
+      font-weight: 400;
+      color: #888;
+    }
+
+    .pricing-detail {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* CLOSING TEXT */
+    .closing {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: #3a3a3a;
+      margin-bottom: 14px;
+    }
+
+    /* SIGN OFF */
+    .signoff-cheers {
+      font-size: 14.5px;
+      color: #3a3a3a;
+      margin-bottom: 2px;
+    }
+
+    .signoff {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      font-style: italic;
+      color: #8B2332;
+      margin-bottom: 6px;
+    }
+
+    .signoff-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    .signoff-info {
+      flex: 1;
+    }
+
+    .signoff-detail {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .signoff-qr {
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .signoff-qr img {
+      width: 120px;
+      height: 120px;
+      border-radius: 4px;
+    }
+
+    .signoff-qr p {
+      font-size: 8px;
       color: #aaa;
-      text-align: center;
-      letter-spacing: 0.3px;
+      margin-top: 3px;
     }
 
-    .footer {
-      text-align: center;
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid #eee;
-      font-size: 12px;
-      color: #bbb;
-      letter-spacing: 0.2px;
+    /* FOOTER LINE */
+    .footer-line {
+      position: absolute;
+      bottom: 16mm;
+      left: 24mm;
+      right: 24mm;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 8px;
+      border-top: 1px solid #e0d5c3;
+    }
+
+    .footer-line p {
+      font-size: 9px;
+      color: #aaa;
+    }
+
+    /* ========== PAGE 2 ========== */
+
+    .page-2 {
+      page-break-before: always;
+    }
+
+    .page-2 h1 {
+      font-size: 32px;
+      margin-bottom: 18px;
+    }
+
+    /* COMPARISON TABLE */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 11.5px;
+    }
+
+    .comparison-table thead th {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      border-bottom: 2px solid #e0d5c3;
+      text-align: left;
+    }
+
+    .comparison-table thead th:first-child {
+      color: #1a1a1a;
+      width: 22%;
+    }
+
+    .comparison-table thead th:nth-child(2) {
+      color: #d44;
+      width: 39%;
+    }
+
+    .comparison-table thead th:nth-child(3) {
+      color: #2a7;
+      width: 39%;
+    }
+
+    .comparison-table tbody td {
+      padding: 7px 10px;
+      border-bottom: 1px solid #f0ebe3;
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .comparison-table tbody td:first-child {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .comparison-table tbody td:nth-child(2) {
+      color: #b44;
+    }
+
+    .comparison-table tbody td:nth-child(3) {
+      color: #1a7a50;
+    }
+
+    .comparison-table tbody tr:nth-child(even) {
+      background: #faf6ef;
+    }
+
+    /* WHAT'S INCLUDED */
+    .included-section {
+      margin-top: 18px;
+      margin-bottom: 14px;
+    }
+
+    .included-section h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+
+    .included-item {
+      font-size: 13px;
+      color: #3a3a3a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .included-item .check {
+      color: #2a7;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
     }
 
     @media print {
-      body {
-        padding: 0;
-        background-color: #fffcf7;
-        font-size: 14px;
-      }
+      body { background: #fff; }
+      .page { margin: 0; box-shadow: none; }
+    }
 
-      .page {
-        max-width: 100%;
-        padding: 36px 48px;
-      }
-
-      .headline {
-        font-size: 36px;
-      }
-
-      .pricing-box {
-        border: 1.5px solid #e8dfd4;
-        background-color: #fef9ef;
-      }
-
-      .footer {
-        position: fixed;
-        bottom: 24px;
-        left: 0;
-        right: 0;
-        border-top: none;
-        margin-top: 0;
-        padding-top: 0;
-      }
+    @media screen {
+      body { background: #ddd; }
+      .page { box-shadow: 0 2px 20px rgba(0,0,0,0.15); margin: 20px auto; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ==================== PAGE 1 ==================== -->
   <div class="page">
 
-    <p class="top-label">A Note From a Local 15-Year-Old</p>
+    <div class="top-label">A Note From a Local 15-Year-Old</div>
 
-    <h1 class="headline">Hi, I'm Zac</h1>
+    <h1>Hi, I'm Zac</h1>
 
     <p class="body-text">
       I'm a 15-year-old from Manly (2095) and I run a small web design business on the side. I spend my time building websites for local businesses — mostly restaurants and cafes around the Northern Beaches.
     </p>
 
     <p class="body-text">
-      I came across Garage Pizza while looking at local restaurants online, and honestly, your pizza looks incredible — 20 years on Pittwater Road is seriously impressive. Your Google reviews speak for themselves (4.4 stars!). But I noticed your website doesn't quite do the business justice.
+      I came across Garage Pizza while looking at local restaurants online, and I was genuinely impressed — <strong>20+ years on Pittwater Road</strong> is a seriously big deal. Your Google reviews speak for themselves (<strong>4.4 stars!</strong>). But I noticed your current website doesn't quite do the business justice. The menu doesn't load properly, there's no structured data for Google, and it's missing a lot of the things that help people find you online.
     </p>
 
     <p class="body-text">
-      So I went ahead and rebuilt your website from scratch — completely free, no strings attached. It's modern, mobile-friendly, loads fast, and is optimised for Google search so more people can find you.
+      So I went ahead and <strong>rebuilt your website from scratch — completely free, no strings attached</strong>. It's modern, mobile-friendly, loads fast, and is built to help more people in Manly and the Northern Beaches find you on Google.
     </p>
 
+    <div class="divider"></div>
+
+    <!-- QR SECTION -->
     <div class="qr-section">
-      <p>Scan to see your new website:</p>
-      <img src="images/garage-pizza-qr.png" alt="QR code to view the new Garage Pizza website">
-      <span class="url">garage-pizza.pages.dev</span>
-    </div>
-
-    <div class="pricing-box">
-      <div class="price">$30/month</div>
-      <div class="subtitle">No setup fee. No lock-in contract. Cancel anytime.</div>
-      <div class="detail">Includes hosting, updates, and ongoing support.</div>
-    </div>
-
-    <p class="body-text">
-      If it's not for you, that's completely fine — no hard feelings at all. I just thought you deserved a website that matches how good your pizza actually is.
-    </p>
-
-    <p class="sign-off">Cheers,</p>
-    <p class="sign-name">Zac</p>
-
-    <div class="contact">
-      <p class="contact-line">Phone: <a href="tel:0401102066">0401 102 066</a></p>
-      <p class="contact-line">Email: <a href="mailto:zacmanzacmanoz@gmail.com">zacmanzacmanoz@gmail.com</a></p>
-      <div class="contact-qr">
-        <img src="images/zac-website-qr.png" alt="QR code to Zac's web design website">
-        <p class="url">zac-web-design.pages.dev</p>
+      <div class="qr-section-text">
+        <div class="qr-label">Scan to See Your New Website</div>
+        <div class="qr-headline">Your new website, ready to view</div>
+        <span class="qr-url">garage-pizza.pages.dev</span>
+        <div class="qr-hint">Point your phone camera at the code to open it instantly.</div>
+      </div>
+      <div class="qr-code">
+        <img src="images/garage-pizza-qr.png" alt="QR code to view the new Garage Pizza website">
       </div>
     </div>
 
-    <p class="footer">Designed for Garage Pizza — Manly's favourite thin crust pizza since 2004.</p>
+    <!-- PRICING BOX -->
+    <div class="pricing-box">
+      <div class="pricing-amount">$30<span>/month</span></div>
+      <p class="pricing-detail">
+        No setup fee. No lock-in contract. Cancel anytime.<br>
+        Includes hosting, updates, and ongoing support.
+      </p>
+    </div>
+
+    <p class="closing">
+      If it's not for you, that's completely fine — no hard feelings at all. I just thought you deserved a website that matches how good your pizza actually is.
+    </p>
+
+    <!-- SIGN OFF -->
+    <p class="signoff-cheers">Cheers,</p>
+    <div class="signoff">Zac</div>
+
+    <div class="signoff-block">
+      <div class="signoff-info">
+        <p class="signoff-detail">
+          Phone: 0401 102 066<br>
+          Email: zacmanzacmanoz@gmail.com
+        </p>
+      </div>
+      <div class="signoff-qr">
+        <img src="images/zac-website-qr.png" alt="QR code to Zac's web design website">
+        <p>zac-web-design.pages.dev</p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-line">
+      <p>Designed for Garage Pizza — Manly's favourite thin crust pizza since 2004.</p>
+    </div>
 
   </div>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page page-2">
+
+    <div class="top-label">What We Improved</div>
+
+    <h1>What Your New Website Does Better</h1>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Before (old site)</th>
+          <th>After (new site)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Website Speed</td>
+          <td>Slow GoDaddy builder, heavy JavaScript</td>
+          <td>Fast static HTML, instant loading</td>
+        </tr>
+        <tr>
+          <td>Google Search Data</td>
+          <td>No structured data at all</td>
+          <td>Full JSON-LD schema — Restaurant, Menu with all 25 pizzas, FAQ, BreadcrumbList</td>
+        </tr>
+        <tr>
+          <td>AI Search (ChatGPT, etc.)</td>
+          <td>Invisible to AI search engines</td>
+          <td>Optimised with definitional sentences, FAQ schema, speakable markup</td>
+        </tr>
+        <tr>
+          <td>Menu</td>
+          <td>Doesn't load (JavaScript-dependent)</td>
+          <td>Full menu with all 25 pizzas, 5 pastas, sides — all sizes and prices</td>
+        </tr>
+        <tr>
+          <td>Customer Reviews</td>
+          <td>None shown on site</td>
+          <td>8 real reviews displayed with ratings from Google, TripAdvisor, UberEats, Facebook</td>
+        </tr>
+        <tr>
+          <td>Your Story</td>
+          <td>Generic one-liner</td>
+          <td>Full about section telling the 20-year story with real photos</td>
+        </tr>
+        <tr>
+          <td>Mobile Experience</td>
+          <td>Basic responsive</td>
+          <td>Fully optimised for phone, tablet, desktop with touch-friendly navigation</td>
+        </tr>
+        <tr>
+          <td>Contact &amp; Hours</td>
+          <td>Buried across multiple pages</td>
+          <td>Clear hours, address, clickable phone, Google Maps directions, all on one page</td>
+        </tr>
+        <tr>
+          <td>Social Media</td>
+          <td>No links</td>
+          <td>Instagram and Facebook linked and integrated</td>
+        </tr>
+        <tr>
+          <td>Local SEO</td>
+          <td>No location keywords</td>
+          <td>50+ natural mentions of Manly, Northern Beaches, Sydney, Pittwater Rd</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- WHAT'S INCLUDED -->
+    <div class="included-section">
+      <h2>What's Included</h2>
+      <div class="included-grid">
+        <div class="included-item"><span class="check">&#10003;</span> Custom-built website</div>
+        <div class="included-item"><span class="check">&#10003;</span> Cloudflare hosting (fast &amp; secure)</div>
+        <div class="included-item"><span class="check">&#10003;</span> Google search optimisation</div>
+        <div class="included-item"><span class="check">&#10003;</span> AI search optimisation</div>
+        <div class="included-item"><span class="check">&#10003;</span> Mobile responsive design</div>
+        <div class="included-item"><span class="check">&#10003;</span> Ongoing updates &amp; support</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-line">
+      <p>Designed for Garage Pizza — Manly's favourite thin crust pizza since 2004.</p>
+    </div>
+
+  </div>
+
 </body>
 </html>

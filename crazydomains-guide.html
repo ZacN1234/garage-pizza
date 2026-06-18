@@ -1,300 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Update Your Nameservers - garagepizza.com.au</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Update Your Nameservers — garagepizza.com.au</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #2d2d2d;
-      line-height: 1.7;
-      font-size: 16px;
-      padding: 40px 20px;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            font-size: 14px;
+        }
 
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-    }
+        .page {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 32px;
+        }
 
-    h1 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 32px;
-      color: #1a1a1a;
-      margin-bottom: 4px;
-    }
+        .prepared-by {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 24px;
+        }
 
-    .subtitle {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-      color: #888;
-      margin-bottom: 28px;
-    }
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
 
-    .intro {
-      font-size: 17px;
-      color: #444;
-      margin-bottom: 36px;
-      line-height: 1.8;
-    }
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 28px;
+        }
 
-    h2 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      color: #1a1a1a;
-      margin-bottom: 14px;
-      margin-top: 36px;
-    }
+        .intro {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
 
-    .ns-box {
-      border-radius: 10px;
-      padding: 20px 24px;
-      margin-bottom: 28px;
-      font-size: 17px;
-    }
+        .email-safety {
+            background: #f0f4f8;
+            border: 1px solid #d0dae4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+        }
 
-    .ns-box.old {
-      background: #fdf2f2;
-      border: 1px solid #f0c8c8;
-    }
+        .email-safety strong {
+            display: block;
+            font-size: 14px;
+            color: #2a5a8a;
+            margin-bottom: 6px;
+        }
 
-    .ns-box.old code {
-      text-decoration: line-through;
-      color: #b94a4a;
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      display: block;
-      margin-bottom: 4px;
-    }
+        .email-safety p {
+            font-size: 13px;
+            color: #3a5a7a;
+            line-height: 1.65;
+        }
 
-    .ns-box.new {
-      background: #f0faf3;
-      border: 1px solid #b5dfc4;
-    }
+        .ns-boxes {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
 
-    .ns-box.new code {
-      color: #2a7d4f;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-      display: block;
-      margin-bottom: 4px;
-    }
+        .ns-box {
+            flex: 1;
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
 
-    .ns-box .note {
-      font-size: 13px;
-      color: #888;
-      margin-top: 10px;
-      font-style: italic;
-    }
+        .ns-box.old {
+            background: #fdf2f2;
+            border: 1px solid #f0c4c4;
+        }
 
-    .steps {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 36px;
-    }
+        .ns-box.new {
+            background: #f0faf0;
+            border: 1px solid #b8ddb8;
+        }
 
-    .steps li {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
+        .ns-box h3 {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
 
-    .step-num {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      background: #d4a853;
-      color: #fff;
-      font-weight: 700;
-      font-size: 15px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 16px;
-      margin-top: 2px;
-    }
+        .ns-box.old h3 {
+            color: #a33;
+        }
 
-    .step-text {
-      font-size: 16px;
-      color: #333;
-      line-height: 1.6;
-      padding-top: 5px;
-    }
+        .ns-box.new h3 {
+            color: #2a7a2a;
+        }
 
-    .step-text strong {
-      color: #1a1a1a;
-    }
+        .ns-box code {
+            display: block;
+            font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+            font-size: 12.5px;
+            line-height: 1.8;
+        }
 
-    .email-section {
-      background: #fafafa;
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      padding: 24px;
-      margin-top: 36px;
-      margin-bottom: 36px;
-    }
+        .ns-box.old code {
+            color: #a33;
+            text-decoration: line-through;
+        }
 
-    .email-section h2 {
-      margin-top: 0;
-      font-size: 18px;
-    }
+        .ns-box.new code {
+            color: #2a7a2a;
+            font-weight: 600;
+        }
 
-    .email-section p {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.75;
-    }
+        .steps-heading {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
 
-    .bottom-section {
-      background: #f7f3eb;
-      border: 1px solid #e8dcc8;
-      border-radius: 10px;
-      padding: 24px;
-      margin-top: 36px;
-      text-align: center;
-    }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
 
-    .bottom-section p {
-      font-size: 16px;
-      color: #555;
-      margin-bottom: 14px;
-      line-height: 1.7;
-    }
+        .step-number {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: #8B2332;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 14px;
+            margin-top: 1px;
+        }
 
-    .bottom-section .contact {
-      font-size: 15px;
-      color: #333;
-      margin-bottom: 4px;
-    }
+        .step-text {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 3px;
+        }
 
-    .bottom-section .contact a {
-      color: #d4a853;
-      text-decoration: none;
-      font-weight: 600;
-    }
+        .step-text strong {
+            color: #1a1a1a;
+        }
 
-    hr {
-      border: none;
-      border-top: 1px solid #eee;
-      margin: 36px 0;
-    }
+        .step-text code {
+            font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+            font-size: 12.5px;
+            background: #f4f4f4;
+            padding: 1px 5px;
+            border-radius: 3px;
+        }
 
-    @media print {
-      body {
-        padding: 0;
-        font-size: 14px;
-      }
-      .container {
-        max-width: 100%;
-      }
-      .ns-box.old {
-        border: 1px solid #ccc;
-      }
-      .ns-box.new {
-        border: 1px solid #ccc;
-      }
-      .email-section, .bottom-section {
-        border: 1px solid #ccc;
-      }
-      a {
-        color: #333;
-        text-decoration: underline;
-      }
-      .step-num {
-        background: #d4a853 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      .ns-box.old, .ns-box.new, .email-section, .bottom-section {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-    }
-  </style>
+        .step-ns-list {
+            margin-top: 6px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-ns-list li {
+            font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+            font-size: 12.5px;
+            color: #2a7a2a;
+            padding: 2px 0;
+        }
+
+        .step-ns-list li::before {
+            content: "\2192  ";
+            color: #2a7a2a;
+        }
+
+        .timing-note {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 24px;
+            margin-bottom: 28px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.65;
+        }
+
+        .timing-note strong {
+            color: #333;
+        }
+
+        .help-section {
+            background: #fdf8f4;
+            border: 1px solid #ecdcc8;
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 28px;
+        }
+
+        .help-section p {
+            font-size: 14px;
+            color: #5a4a3a;
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        .help-section .contact-name {
+            font-weight: 700;
+            font-size: 14px;
+            color: #3a2a1a;
+            margin-bottom: 4px;
+        }
+
+        .help-section .contact-detail {
+            font-size: 13px;
+            color: #5a4a3a;
+            line-height: 1.7;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 11px;
+            color: #aaa;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        @media print {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+
+            @page {
+                size: 210mm 297mm;
+                margin: 15mm 18mm;
+            }
+
+            body {
+                font-size: 13px;
+            }
+
+            .page {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .step-number {
+                background: #8B2332 !important;
+                color: #fff !important;
+            }
+
+            .email-safety {
+                background: #f0f4f8 !important;
+            }
+
+            .ns-box.old {
+                background: #fdf2f2 !important;
+            }
+
+            .ns-box.new {
+                background: #f0faf0 !important;
+            }
+
+            .help-section {
+                background: #fdf8f4 !important;
+            }
+
+            .timing-note {
+                background: #fafafa !important;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
+    <div class="page">
+        <p class="prepared-by">Prepared by Zac Nowytarger &middot; 0401 102 066</p>
 
-    <h1>How to Update Your Nameservers</h1>
-    <p class="subtitle">A quick guide for garagepizza.com.au</p>
+        <h1>How to Update Your Nameservers</h1>
+        <p class="subtitle">A quick guide for garagepizza.com.au</p>
 
-    <p class="intro">To get your new website live on your domain, we just need to point your domain to Cloudflare. This takes about 5 minutes and won't affect your email.</p>
+        <p class="intro">To get your new website live on your domain, we just need to point your domain to a new hosting system (Cloudflare). This takes about 5 minutes and I'll make sure everything &mdash; including your email &mdash; keeps working perfectly.</p>
 
-    <h2>Your Current Nameservers</h2>
-    <div class="ns-box old">
-      <code>ns21.domaincontrol.com</code>
-      <code>ns22.domaincontrol.com</code>
+        <div class="email-safety">
+            <strong>Will this affect my email?</strong>
+            <p>I'll set up all your email records (MX, SPF, DKIM) on the new system before asking you to make this change. Your email will keep working without interruption. I won't ask you to switch until everything is ready.</p>
+        </div>
+
+        <div class="ns-boxes">
+            <div class="ns-box old">
+                <h3>Current Nameservers</h3>
+                <code>ns21.domaincontrol.com</code>
+                <code>ns22.domaincontrol.com</code>
+            </div>
+            <div class="ns-box new">
+                <h3>New Nameservers</h3>
+                <code>dave.ns.cloudflare.com</code>
+                <code>shubhi.ns.cloudflare.com</code>
+            </div>
+        </div>
+
+        <h2 class="steps-heading">Step-by-Step for Crazy Domains</h2>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-text">Go to <code>crazydomains.com.au</code> and log in to your account.</div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-text">Click <strong>"My Account"</strong> in the top right, then <strong>"My Domains"</strong>.</div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-text">Click on <strong>"garagepizza.com.au"</strong> from your domain list.</div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-text">Scroll down to <strong>"Nameservers"</strong> or click the <strong>"DNS"</strong> tab.</div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-text">Click <strong>"Modify"</strong> or <strong>"Change Nameservers"</strong>.</div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">6</div>
+            <div class="step-text">Delete the current nameservers (<code>ns21.domaincontrol.com</code> and <code>ns22.domaincontrol.com</code>).</div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">7</div>
+            <div class="step-text">
+                Enter the two new Cloudflare nameservers:
+                <ul class="step-ns-list">
+                    <li>dave.ns.cloudflare.com</li>
+                    <li>shubhi.ns.cloudflare.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">8</div>
+            <div class="step-text">Click <strong>"Update"</strong> or <strong>"Save Changes"</strong>.</div>
+        </div>
+
+        <div class="timing-note">
+            <strong>Timing:</strong> Changes usually take 1&ndash;24 hours to take effect (often much faster). During this time, your website may show the old or new version intermittently &mdash; that's completely normal.
+        </div>
+
+        <div class="help-section">
+            <p>Don't want to do this yourself? No worries at all &mdash; just give me your Crazy Domains login details and I'll handle everything for you.</p>
+            <div class="contact-name">Zac Nowytarger</div>
+            <div class="contact-detail">
+                Phone: 0401 102 066<br>
+                Email: zacmanzacmanoz@gmail.com
+            </div>
+        </div>
+
+        <div class="footer">
+            Prepared for Samuel Gregg &middot; Garage Pizza &middot; garagepizza.com.au
+        </div>
     </div>
-
-    <h2>Your New Nameservers</h2>
-    <div class="ns-box new">
-      <code>[nameserver1].ns.cloudflare.com</code>
-      <code>[nameserver2].ns.cloudflare.com</code>
-      <p class="note">Zac will provide these exact nameservers</p>
-    </div>
-
-    <hr>
-
-    <h2>Step-by-Step Instructions</h2>
-    <ol class="steps">
-      <li>
-        <span class="step-num">1</span>
-        <span class="step-text">Go to <strong>crazydomains.com.au</strong> and log in to your account.</span>
-      </li>
-      <li>
-        <span class="step-num">2</span>
-        <span class="step-text">Click on <strong>"My Account"</strong> then <strong>"Domain Names"</strong>.</span>
-      </li>
-      <li>
-        <span class="step-num">3</span>
-        <span class="step-text">Click on <strong>garagepizza.com.au</strong> from your domain list.</span>
-      </li>
-      <li>
-        <span class="step-num">4</span>
-        <span class="step-text">Look for <strong>"Nameservers"</strong> or <strong>"DNS Settings"</strong> and click <strong>"Manage"</strong> or <strong>"Change"</strong>.</span>
-      </li>
-      <li>
-        <span class="step-num">5</span>
-        <span class="step-text">Remove the current nameservers (<strong>ns21.domaincontrol.com</strong> and <strong>ns22.domaincontrol.com</strong>).</span>
-      </li>
-      <li>
-        <span class="step-num">6</span>
-        <span class="step-text">Enter the two new Cloudflare nameservers provided by Zac.</span>
-      </li>
-      <li>
-        <span class="step-num">7</span>
-        <span class="step-text">Click <strong>"Save"</strong> or <strong>"Update Nameservers"</strong>.</span>
-      </li>
-      <li>
-        <span class="step-num">8</span>
-        <span class="step-text">That's it! Changes usually take <strong>1 to 24 hours</strong> to take effect.</span>
-      </li>
-    </ol>
-
-    <div class="email-section">
-      <h2>Will this affect my email?</h2>
-      <p>If your email is set up through a third party (like Gmail, Outlook, or a separate email provider), changing nameservers will <strong>NOT</strong> affect your email at all.</p>
-      <p style="margin-top: 10px;">If your email runs through Crazy Domains or GoDaddy, let Zac know first and he'll make sure everything keeps working.</p>
-    </div>
-
-    <div class="bottom-section">
-      <p><strong>Don't want to do this yourself?</strong><br>No worries — just give Zac your Crazy Domains login and he'll handle everything.</p>
-      <p class="contact">Phone: <a href="tel:0401102066">0401 102 066</a></p>
-      <p class="contact">Email: <a href="mailto:zacmanzacmanoz@gmail.com">zacmanzacmanoz@gmail.com</a></p>
-    </div>
-
-  </div>
 </body>
 </html>
