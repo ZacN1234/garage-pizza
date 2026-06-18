@@ -1097,8 +1097,30 @@
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
         }
-        .contact-map iframe { width: 100%; height: 100%; min-height: 420px; border: 0; }
+        .contact-map a { display: block; position: relative; }
+        .contact-map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(17,12,14,0.9));
+            text-align: center;
+        }
+        .contact-map-overlay span {
+            display: inline-block;
+            background: #8B2332;
+            color: #f0ebe6;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-family: 'Bitter', serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+        }
+        .contact-map a:hover .contact-map-overlay span { background: #A42B3E; }
         .contact-landmarks {
             margin-top: 32px;
             text-align: center;
@@ -1167,7 +1189,8 @@
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .gallery-item img { height: 220px; }
             .contact-grid { grid-template-columns: 1fr; }
-            .contact-map iframe { min-height: 300px; }
+            .contact-map a { min-height: 300px; }
+            .contact-map iframe { height: 300px; }
             .footer-grid { grid-template-columns: 1fr; gap: 32px; }
             .footer-bottom { justify-content: center; text-align: center; }
         }
@@ -2064,7 +2087,12 @@
                     </div>
                 </div>
                 <div class="contact-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.3!2d151.2846!3d-33.7963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDQ3JzQ2LjciUyAxNTHCsDE3JzA0LjYiRQ!5e0!3m2!1sen!2sau!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Garage Pizza Manly location on Google Maps — 2/196 Pittwater Rd, Manly NSW 2095"></iframe>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Garage+Pizza,+196+Pittwater+Rd,+Manly+NSW+2095" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Garage Pizza Manly on Google Maps" style="display:block;background:#1a1315;min-height:420px;position:relative;text-decoration:none;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1658.15!2d151.28899!3d-33.80037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ab97892af7c7%3A0x7c4e09e5d3b50bad!2sGarage%20Pizza!5e0!3m2!1sen!2sau!4v1" style="width:100%;height:420px;border:0;pointer-events:none;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Garage Pizza Manly location — 2/196 Pittwater Rd, Manly NSW 2095"></iframe>
+                        <div class="contact-map-overlay">
+                            <span>Get Directions on Google Maps</span>
+                        </div>
+                    </a>
                 </div>
             </div>
             <p class="contact-landmarks">Located on Pittwater Road in the heart of Manly, just a short walk from Manly Beach, Manly Wharf, and The Corso. Easily accessible by ferry, bus, or car from anywhere on Sydney's Northern Beaches. Garage Pizza is a five-minute walk from Manly Wharf, making it a popular dinner spot for visitors arriving by ferry.</p>
