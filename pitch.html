@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Note for Garage Pizza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background-color: #fffcf7;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #3a3a3a;
+      padding: 48px 24px;
+    }
+
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .top-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: #b0a090;
+      margin-bottom: 28px;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #2a2a2a;
+      margin-bottom: 36px;
+      line-height: 1.2;
+    }
+
+    .body-text {
+      font-size: 15px;
+      color: #4a4a4a;
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+
+    .qr-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .qr-section p {
+      font-size: 15px;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .qr-section img {
+      width: 180px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .qr-section .url {
+      font-size: 13px;
+      color: #999;
+      letter-spacing: 0.3px;
+    }
+
+    .pricing-box {
+      border: 1.5px solid #e8dfd4;
+      background-color: #fef9ef;
+      border-radius: 14px;
+      padding: 32px 36px;
+      text-align: center;
+      max-width: 440px;
+      margin: 40px auto;
+    }
+
+    .pricing-box .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #2a2a2a;
+      margin-bottom: 6px;
+    }
+
+    .pricing-box .subtitle {
+      font-size: 14px;
+      font-weight: 500;
+      color: #5a5a5a;
+      margin-bottom: 8px;
+    }
+
+    .pricing-box .detail {
+      font-size: 13px;
+      color: #999;
+    }
+
+    .sign-off {
+      margin-top: 40px;
+      margin-bottom: 4px;
+      font-size: 15px;
+      color: #4a4a4a;
+    }
+
+    .sign-name {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 26px;
+      font-weight: 600;
+      color: #2a2a2a;
+      margin-bottom: 36px;
+    }
+
+    .contact {
+      border-top: 1px solid #e8e0d6;
+      padding-top: 28px;
+      margin-top: 8px;
+    }
+
+    .contact-line {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .contact-line a {
+      color: #777;
+      text-decoration: none;
+    }
+
+    .contact-qr {
+      margin-top: 20px;
+    }
+
+    .contact-qr img {
+      width: 120px;
+      height: auto;
+      display: block;
+      margin: 0 auto 8px;
+    }
+
+    .contact-qr .url {
+      font-size: 12px;
+      color: #aaa;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #eee;
+      font-size: 12px;
+      color: #bbb;
+      letter-spacing: 0.2px;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background-color: #fffcf7;
+        font-size: 14px;
+      }
+
+      .page {
+        max-width: 100%;
+        padding: 36px 48px;
+      }
+
+      .headline {
+        font-size: 36px;
+      }
+
+      .pricing-box {
+        border: 1.5px solid #e8dfd4;
+        background-color: #fef9ef;
+      }
+
+      .footer {
+        position: fixed;
+        bottom: 24px;
+        left: 0;
+        right: 0;
+        border-top: none;
+        margin-top: 0;
+        padding-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <p class="top-label">A Note From a Local 15-Year-Old</p>
+
+    <h1 class="headline">Hi, I'm Zac</h1>
+
+    <p class="body-text">
+      I'm a 15-year-old from Manly (2095) and I run a small web design business on the side. I spend my time building websites for local businesses — mostly restaurants and cafes around the Northern Beaches.
+    </p>
+
+    <p class="body-text">
+      I came across Garage Pizza while looking at local restaurants online, and honestly, your pizza looks incredible — 20 years on Pittwater Road is seriously impressive. Your Google reviews speak for themselves (4.4 stars!). But I noticed your website doesn't quite do the business justice.
+    </p>
+
+    <p class="body-text">
+      So I went ahead and rebuilt your website from scratch — completely free, no strings attached. It's modern, mobile-friendly, loads fast, and is optimised for Google search so more people can find you.
+    </p>
+
+    <div class="qr-section">
+      <p>Scan to see your new website:</p>
+      <img src="images/garage-pizza-qr.png" alt="QR code to view the new Garage Pizza website">
+      <span class="url">garage-pizza.pages.dev</span>
+    </div>
+
+    <div class="pricing-box">
+      <div class="price">$30/month</div>
+      <div class="subtitle">No setup fee. No lock-in contract. Cancel anytime.</div>
+      <div class="detail">Includes hosting, updates, and ongoing support.</div>
+    </div>
+
+    <p class="body-text">
+      If it's not for you, that's completely fine — no hard feelings at all. I just thought you deserved a website that matches how good your pizza actually is.
+    </p>
+
+    <p class="sign-off">Cheers,</p>
+    <p class="sign-name">Zac</p>
+
+    <div class="contact">
+      <p class="contact-line">Phone: <a href="tel:0401102066">0401 102 066</a></p>
+      <p class="contact-line">Email: <a href="mailto:zacmanzacmanoz@gmail.com">zacmanzacmanoz@gmail.com</a></p>
+      <div class="contact-qr">
+        <img src="images/zac-website-qr.png" alt="QR code to Zac's web design website">
+        <p class="url">zac-web-design.pages.dev</p>
+      </div>
+    </div>
+
+    <p class="footer">Designed for Garage Pizza — Manly's favourite thin crust pizza since 2004.</p>
+
+  </div>
+</body>
+</html>

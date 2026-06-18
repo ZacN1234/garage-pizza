@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Update Your Nameservers - garagepizza.com.au</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #2d2d2d;
+      line-height: 1.7;
+      font-size: 16px;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    .intro {
+      font-size: 17px;
+      color: #444;
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+
+    h2 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #1a1a1a;
+      margin-bottom: 14px;
+      margin-top: 36px;
+    }
+
+    .ns-box {
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      font-size: 17px;
+    }
+
+    .ns-box.old {
+      background: #fdf2f2;
+      border: 1px solid #f0c8c8;
+    }
+
+    .ns-box.old code {
+      text-decoration: line-through;
+      color: #b94a4a;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .ns-box.new {
+      background: #f0faf3;
+      border: 1px solid #b5dfc4;
+    }
+
+    .ns-box.new code {
+      color: #2a7d4f;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .ns-box .note {
+      font-size: 13px;
+      color: #888;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 36px;
+    }
+
+    .steps li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: #d4a853;
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+      margin-top: 2px;
+    }
+
+    .step-text {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+      padding-top: 5px;
+    }
+
+    .step-text strong {
+      color: #1a1a1a;
+    }
+
+    .email-section {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 24px;
+      margin-top: 36px;
+      margin-bottom: 36px;
+    }
+
+    .email-section h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    .email-section p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.75;
+    }
+
+    .bottom-section {
+      background: #f7f3eb;
+      border: 1px solid #e8dcc8;
+      border-radius: 10px;
+      padding: 24px;
+      margin-top: 36px;
+      text-align: center;
+    }
+
+    .bottom-section p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+
+    .bottom-section .contact {
+      font-size: 15px;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .bottom-section .contact a {
+      color: #d4a853;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 36px 0;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        font-size: 14px;
+      }
+      .container {
+        max-width: 100%;
+      }
+      .ns-box.old {
+        border: 1px solid #ccc;
+      }
+      .ns-box.new {
+        border: 1px solid #ccc;
+      }
+      .email-section, .bottom-section {
+        border: 1px solid #ccc;
+      }
+      a {
+        color: #333;
+        text-decoration: underline;
+      }
+      .step-num {
+        background: #d4a853 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .ns-box.old, .ns-box.new, .email-section, .bottom-section {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <h1>How to Update Your Nameservers</h1>
+    <p class="subtitle">A quick guide for garagepizza.com.au</p>
+
+    <p class="intro">To get your new website live on your domain, we just need to point your domain to Cloudflare. This takes about 5 minutes and won't affect your email.</p>
+
+    <h2>Your Current Nameservers</h2>
+    <div class="ns-box old">
+      <code>ns21.domaincontrol.com</code>
+      <code>ns22.domaincontrol.com</code>
+    </div>
+
+    <h2>Your New Nameservers</h2>
+    <div class="ns-box new">
+      <code>[nameserver1].ns.cloudflare.com</code>
+      <code>[nameserver2].ns.cloudflare.com</code>
+      <p class="note">Zac will provide these exact nameservers</p>
+    </div>
+
+    <hr>
+
+    <h2>Step-by-Step Instructions</h2>
+    <ol class="steps">
+      <li>
+        <span class="step-num">1</span>
+        <span class="step-text">Go to <strong>crazydomains.com.au</strong> and log in to your account.</span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span class="step-text">Click on <strong>"My Account"</strong> then <strong>"Domain Names"</strong>.</span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span class="step-text">Click on <strong>garagepizza.com.au</strong> from your domain list.</span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span class="step-text">Look for <strong>"Nameservers"</strong> or <strong>"DNS Settings"</strong> and click <strong>"Manage"</strong> or <strong>"Change"</strong>.</span>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <span class="step-text">Remove the current nameservers (<strong>ns21.domaincontrol.com</strong> and <strong>ns22.domaincontrol.com</strong>).</span>
+      </li>
+      <li>
+        <span class="step-num">6</span>
+        <span class="step-text">Enter the two new Cloudflare nameservers provided by Zac.</span>
+      </li>
+      <li>
+        <span class="step-num">7</span>
+        <span class="step-text">Click <strong>"Save"</strong> or <strong>"Update Nameservers"</strong>.</span>
+      </li>
+      <li>
+        <span class="step-num">8</span>
+        <span class="step-text">That's it! Changes usually take <strong>1 to 24 hours</strong> to take effect.</span>
+      </li>
+    </ol>
+
+    <div class="email-section">
+      <h2>Will this affect my email?</h2>
+      <p>If your email is set up through a third party (like Gmail, Outlook, or a separate email provider), changing nameservers will <strong>NOT</strong> affect your email at all.</p>
+      <p style="margin-top: 10px;">If your email runs through Crazy Domains or GoDaddy, let Zac know first and he'll make sure everything keeps working.</p>
+    </div>
+
+    <div class="bottom-section">
+      <p><strong>Don't want to do this yourself?</strong><br>No worries — just give Zac your Crazy Domains login and he'll handle everything.</p>
+      <p class="contact">Phone: <a href="tel:0401102066">0401 102 066</a></p>
+      <p class="contact">Email: <a href="mailto:zacmanzacmanoz@gmail.com">zacmanzacmanoz@gmail.com</a></p>
+    </div>
+
+  </div>
+</body>
+</html>
